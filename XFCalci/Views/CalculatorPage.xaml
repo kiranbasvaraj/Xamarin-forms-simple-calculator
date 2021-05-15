@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="http://prismlibrary.com"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    x:Class="XFCalculatorApp.Views.CalculatorPage"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <Style x:Key="CalButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Black"></Setter>
+            <Setter Property="TextColor" Value="Orange"></Setter>
+            <Setter Property="FontAttributes" Value="Bold"></Setter>
+            <Setter Property="FontSize" Value="25"></Setter>
+            <Setter Property="CornerRadius" Value="25"></Setter>
+        </Style>
+
+        <Style x:Key="OperationsButtonStyle" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Orange"></Setter>
+            <Setter Property="TextColor" Value="Black"></Setter>
+            <Setter Property="FontAttributes" Value="Bold"></Setter>
+            <Setter Property="FontSize" Value="25"></Setter>
+            <Setter Property="CornerRadius" Value="25"></Setter>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+
+        <Grid BackgroundColor="Gray" Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+            <!--Display-->
+            <Frame Grid.Column="0" Grid.Row="0" BorderColor="Black" IsClippedToBounds="True" Grid.ColumnSpan="4" CornerRadius="25" BackgroundColor="DarkGray" >
+                <Label Text="{Binding Result}"  TextColor="Black" FontAttributes="Bold" FontSize="25" BackgroundColor="Transparent"
+                    HeightRequest="160" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="1"></Label>
+            </Frame>
+
+            
+            <!--number-->
+            <Button Text="1" Command="{Binding CalculateResult}" CommandParameter="1" Grid.Row="1" Grid.Column="0" Style="{StaticResource Key=CalButton}"/>
+            <Button Text="2" Command="{Binding CalculateResult}" CommandParameter="2" Grid.Row="1" Grid.Column="1" Style="{StaticResource Key=CalButton}"/>
+            <Button Text="3" Command="{Binding CalculateResult}" CommandParameter="3" Grid.Row="1" Grid.Column="2" Style="{StaticResource Key=CalButton}"/>
+            <Button Text="4" Command="{Binding CalculateResult}" CommandParameter="4" Grid.Row="2" Grid.Column="0" Style="{StaticResource Key=CalButton}"/>
+            <Button Text="5" Command="{Binding CalculateResult}" CommandParameter="5" Grid.Row="2" Grid.Column="1" Style="{StaticResource Key=CalButton}"/>
+            <Button Text="6" Command="{Binding CalculateResult}" CommandParameter="6" Grid.Row="2" Grid.Column="2" Style="{StaticResource Key=CalButton}"/>
+            <Button Text="7" Command="{Binding CalculateResult}" CommandParameter="7" Grid.Row="3" Grid.Column="0" Style="{StaticResource Key=CalButton}"/>
+            <Button Text="8" Command="{Binding CalculateResult}" CommandParameter="8" Grid.Row="3" Grid.Column="1" Style="{StaticResource Key=CalButton}"/>
+            <Button Text="9" Command="{Binding CalculateResult}" CommandParameter="9" Grid.Row="3" Grid.Column="2" Style="{StaticResource Key=CalButton}"/>
+            <Button Text="0" Command="{Binding CalculateResult}" CommandParameter="0" Grid.Row="4" Grid.Column="1" Style="{StaticResource Key=CalButton}"/>
+
+            
+            <!--Operations-->
+            <Button Text="x" Command="{Binding CalculateResult}" CommandParameter="*" Grid.Row="4" Grid.Column="3" Style="{StaticResource Key=OperationsButtonStyle}"/>
+            <Button Text="+" Command="{Binding CalculateResult}" CommandParameter="+" Grid.Row="1" Grid.Column="3" Style="{StaticResource Key=OperationsButtonStyle}"/>
+            <Button Text="-" Command="{Binding CalculateResult}" CommandParameter="-" Grid.Row="2" Grid.Column="3" Style="{StaticResource Key=OperationsButtonStyle}"/>
+            <Button Text="/" Command="{Binding CalculateResult}" CommandParameter="/" Grid.Row="3" Grid.Column="3" Style="{StaticResource Key=OperationsButtonStyle}"/>
+
+            <!--dummy-->
+            <Button Text="=" Command="{Binding CalculateResult}" CommandParameter="="  Grid.Row="4" Grid.Column="2" Style="{StaticResource Key=OperationsButtonStyle}"/>
+            <Button Text="AC" Command="{Binding CalculateResult}" CommandParameter="c"   Grid.Row="4" Grid.Column="0" Style="{StaticResource Key=CalButton}" Background="red"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
